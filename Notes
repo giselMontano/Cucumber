@@ -1,0 +1,220 @@
+Class 1 - CUCUMBER
+
+Tool and framework
+
+Cucumber - it is a tool that supports BDD
+BDD->BEHAVIOR DRIVEN DEVELOPMENT->It works on behavior,
+test cases are  written in plain English like sentences this is called Gherkin language
+Every single scenery is a test case
+
+GHERKIN LANGUAGE
+Given - pre condition
+When - to perform actions
+And - supporting tag
+Then - expected result/outcome
+
+BENEFIT OF CUCUMBER;
+ ->Detailed reports
+ ->Free to use
+ ->Compatible with many programming languages
+ ->Good integration with Web base test tool like selenium, we can not automate any other application but websites.
+ ->EASY TO IMPLEMENT DATA DRIVEN TESTING
+
+"DATA DRIVEN TESTING"->ONE LOGIN SCENARIO EXECUTION, ONE SCRIPT FOR LOGIN THAT CAN EXECUTE AGAINST 100 OR MORE USER NAMES AND PASSWORDS, IT ALSO GENERATE REPORTS
+EXAMPLE-> FACEBOOK LOGIN, take diffrenet users and passwords
+
+---------------------------------------------------------------------------------------------------------
+EXAMPLE
+->1 script
+DATA DRIVEN TEST: Write one time
+
+US - 12345 - Search employee by name "12345"<-RANDOM NUMBER OF SCRIPT
+Given user is able to open chrome browser
+When user enters username and password//WE CAN NOT USE WHEN WHEN CONTINUOUSLY
+And user clicks on login button
+Then user is navigated to dashboard page
+When user clicks on PIM option
+And user clicks on employee list option
+When user enters name in the employee name field
+And user clicks on search button
+Then user is able to see the employee
+
+-- Cucumbers encourages code re-usability concept
+code re usability using cucumber you just need to change some lines and add the ones needed for the new script
+
+->2 script-->RESOURCES/FEATURES/EmpoyeeSearch.features.
+US - 2345 - Search employee by id       "2345"<-RANDOM NUMBER OF SCRIPT
+Given user is able to open chrome browser
+When user enters username and password//WE CAN NOT USE WHEN WHEN CONTINUOUSLY
+And user clicks on login button
+Then user is navigated to dashboard page
+When user clicks on PIM option
+And user clicks on employee list option
+When user enters id in the employee id field<-THIS IS THE ONLY LANE THAT NEEDED TO BE CHANGE FOR ANOTHER SCRIPT
+And user clicks on search button
+Then user is able to see the employee
+
+-- Cucumbers encourages code re-usability concept
+
+---------------------------------------------------------------------------------------------------------
+TWO TYPES OF CODE:
+1)develop the application
+    main folder (FOR DEVELOPERS ONLY)- the code we write to develop the application, we write under main
+    we do not need it. Therefore, the best is to delete the folder.
+
+2)to test the application
+    test (QA)- the code we write to test the application, we write under test
+
+---------------------------------------------------------------------------------------------------------
+FRAMEWORK:
+
+COMMON METHODS MUST BE EXTENDED IN ALL THE CLASSES AND PAGES PACKAGE MUST BE CREATED BY A OBJECT TO USE THE METHODS!!!!
+
+SET OF GUIDELINES->organized structure of the folders that teaches you how to write which type of code and where to write it.
+    -->IT IS A REUSABLE CODE.
+    -->"TEAM CONSISTENCY" STANDARD PROCEDURE, FRAMEWORK TEACHES EVERYONE TO FALLOW A PARTICULAR ORGANIZED STRUCTURE
+WE NEED CUCUMBER/FRAMEWORK TO GENERATE REPORTS OF THE TEXTS FOR THE CLIENT OR THE COMPANY.
+NORMALLY THE TEST SHOULD BE ABLE TO EXECUTE AGAINST ANY NUMBER OF DATA "DATA DRIVEN TEST" SELENIUM IS NOT ABLE TO DO THIS.
+
+IMPORTANT CHARACTERISTIC OF FRAMEWORK:
+      ->Any body should be able to use it.
+      ->Should not be project dependent of one source only. Example syntax, or launch a only one application.
+      ->Re-usable, easy to manage and maintain, divided by folders.
+      ->Flow clear, we work on test folder no main.
+      ->Simple and easy to understand and use for anyone in your team even the most newest person.
+      ->No hardcoding
+      ->Easily extendable in case the project grows or change.
+      ->Should be platform independent meaning it can run in any machine, such as Mac, Windows, Linux etc.
+BENEFITS OF FRAMEWORK:
+  ->Minimal Manual Intervention-->THIS WILL HELP TO AUTOMATE EVERYTHING AND BE ABLE TO EXECUTE TEST WITH THE MINIMAL MANUAL INTERACTION.
+  ->Efficiency
+  ->Low cost
+  ->Maximum test coverage
+  ->Reuse code
+
+---------------------------------------------------------------------------------------------------------
+2 THINGS WE HAVE IN EVERY PROJECT:
+
+- coding -> java
+  coding will be at one place
+
+- non - java  -> properties file, excel etc.
+   non java will be at another place
+   //right click test->Directory->name it->resources<-this is a new kind of directory, watch your spelling!
+       underneath "resources"-> create another Directory call it "features"
+            underneath "features"->create a File call it "Login.feature"
+              THE FIRST THING YOU WRITE IN YOUR FEATURE FILE IS KEYWORD "Feature" this feature will allow to run the test no need of main method
+                 KEYWORD "Feature"->WILL RUN ALL THE TEST CASES
+
+
+-- to write gherkin scenarios, we use feature files
+
+EXAMPLE: non - java:THIS TEST CASE WILL BE LINK TO A CODE IN ORDER TO BE RUN
+KEYWORD->Scenario: THIS WILL ALLOW YOU TO EXECUTE JUST ONE TEST CASE
+scenario - every scenario is considered as one test case
+
+---------------------------------------------------------------------------------------------------------
+THIS TEST CASE IS CALL DECLARATION:
+When you are declaring your steps you MUST check your spelling and no spaces in between like "ad min" it will throw an error
+
+Valid admin login<-NAME OF TEST CASE/SCENARIO
+
+Given user is navigated to HRMS application
+When user enters admin username and password
+And clicks on login button
+Then admin user is successfully logged in
+
+---------------------------------------------------------------------------------------------------------
+THIS IS CALLED TEST DEFINITION:
+RUNNER CLASS-> ALLOWS CUCUMBER TO RUN ALL THE TEST CASES, IT WORKS SIMILARLY AS XML IN TESTNG.
+RUNNER CLASS-> First we run the "public class RunnerClass {"
+then we go to the error THAT PART IS CALLED STEP DEFINITION AND COPY inside the steps/"LoginSteps" and we import the classes Given,Then,When.
+IN "STEPS PACKAGE" WE CAN DECLARE ONLY ONE TIME EACH STEPS DEFINITION, IF WE HAVE TWO CLASSES WITH THE SAME STEP WE JUST DECLARED ONCE, OTHERWISE WE WILL RUN INTO AN ERROR
+
+when the highlighted codes from "features/Login.feature"  in NO-JAVA  is gone it means that is linked to the correct code in JAVA
+in order to find where these codes were declared you can:
+->go to "features/Login.feature" right click on the steps that are not highlighted anymore WHEN, THEN, ETC->go to->Declaration or usage.
+THIS WILL TAKE YOU TO THE PART JAVA WHERE THE STEPS WHERE DECLARED
+
+-----------------------------------------------------------------------------------------------------------
+LoginSteps.java-WE USE WEB-DRIVER MANAGER TO HANDLE=> BROWSER, PATH, COMPATIBILITY OF DRIVER WITH BROWSER
+why we don't need system.setproperty() -  "driver/chromedriver.exe"
+if the path is incorrect to webdriver - it will fail, path is limited to one machine
+many time it is not compatible with browser
+
+we use webdrivermanager from now onwards
+
+===========================================================================================================
+Class 2 -
+
+--  Recap --
+  -- Cucumber - it is a tool that supports BDD
+  -- Gherkin language we use to write BDD
+  -- KEYWORDS=>Feature, Scenario, Given, When, Then, And
+  Feature->CONTAINS THE COMPLETE USER STORY
+  Scenario->TEST CASE
+  Given->PRE CONDITION
+  When->ACTION
+  And->SUPPORTING TAG
+  Then->EXPECTED RESULT
+
+-----------------------------------------------------------------------------------------------------------
+What is framework -
+    -- it is an organized structure which allows us to write clean and maintainable code
+
+WE WRITE CODE IN "TEST"
+JAVA
+RESOURCES= non-java
+    Feature file - declare steps in it
+AFTER DECLARE THE STEPS WE NEED TO EXECUTE THEM IN "RUNNERS CLASS" IT IS LIKE XML IN TESTNG THAT CAN EXECUTE MORE THAN ONE TEST AT ONCE
+
+
+WEB DRIVER MANAGER->HANDLE ANY BROWSER,DRIVER.
+IMPLICIT WAIT->RELATES ON TIME
+EXPLICIT WAIT->RELATES ON CONDITION
+
+-----------------------------------------------------------------------------------------------------------
+ENHANCE FRAMEWORK->Need cross browser testing
+                 ->File non-java in resources folder-> "Config.properties" with data to execute the test to be reusable with any information such as: url, username, password.
+                  //In order to read this File we must create a class named "ConfigReader" in java utils
+CROSS BROWSER TESTING: This allow to execute the test in any browser Chrome,Firefox,Opera,Edge,Safari.
+
+POM - page object model is a design pattern in which we create object repository.
+CREATION OF PACKAGE "pages" THAT STORE LOCATORS OF SPECIFIC SCREENS/PAGE INTO SEPARATE CLASSES
+-> login page screen store specific locators, dashboard screen store specific locators ,add employee screen store specific locators
+THE MOMENT YOU PRESS SOMETHING IN DASHBOARD SCREEN, AND THE SCREEN CHANGES IT MEANS THAT IS A NEW PAGE
+
+PAGE INITIALIZER CLASS->THIS IS CREATED UNDER "STEPS PACKAGE"
+AND THE FUNCTIONALITY IS TO CREATE A FUNCTION THAT INITIALIZE ALL OF THE (PAGE OBJECTS)
+===========================================================================================================
+Class 3 -
+
+-- recap --
+    -- architecture of framework --
+    -- utils - to keep all the utilities of our project such as constants, config reader
+                common methods etc to reuse them.
+
+
+    -- steps - all step definitions can be found under this package for the gherkin
+    steps we used in feature file
+    -- Pages -- POM -- to implement object repository and functions.
+
+    Runner class - we use this class to execute all of our test cases
+
+For pre condition and post condition in cucumber we have 2 annotations
+
+Hooks -
+@Before - this one we use for pre condition
+@After - this one we use for post condition
+
+
+-- hooks should always be mentioned under steps package
+
+
+Background vs hooks
+
+Hooks are applicable to all feature files
+Background is applicable to just one feature file\
+
+Hooks execute first then background executes then scenario executes and in the
+end hooks executes again as post condition
